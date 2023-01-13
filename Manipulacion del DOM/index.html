@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="tittle">Manipulacion del DOM básica</h1>
+    <!-- <div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      </p>
+      <p class="parrafo">Monky D.Luffy</p>
+      <p id="pid">Zoro Roronoa</p>
+    </div> -->
+
+    <form id="formulario">
+      <input id="calculo1" placeholder="123" />
+      <input onchange="" id="calculo2" placeholder="123" />
+      <button id="btnCalcular">Calcular</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
+
+<!-- Una forma de escuchar eventos de algun elemento en HTML desde Javascript es agregando el atributo onClick="" en HTML.
+    >onclick escucha el evento de clickear el mouse
+    >onchange escucha los eventos del input
+      <button id="btnCalcular" onclick="btnOnClick()">Calcular</button>
+
+    Dentro de estos atributos colocamos el nombre de la funcion que va a ejecutar al escuchar este evento
+-->
+<!-- 
+    La etiqueta form interpreta el ultimo boton dentro de su etiqueta y lo transofrma en tipo submit para enviar el formulario.(por eso se recarga la pagina)
+ -->
