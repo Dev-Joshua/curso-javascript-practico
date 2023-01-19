@@ -10,11 +10,5 @@ menuBurgerIcon.addEventListener("click", toggleMobileMenu);
 
 function toggleDesktopMenu() {
   console.log("Click");
-  const isAsideOpen = !shoppingCartContainer.classList.contains("inactive");
-
-  if (isAsideOpen) {
-    //Si esta abierto agregar la clase inactive al aside
-    shoppingCartContainer.classList.add("inactive");
-  }
   desktopMenu.classList.toggle("inactive");
 }
