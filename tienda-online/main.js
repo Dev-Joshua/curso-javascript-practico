@@ -12,3 +12,8 @@ function toggleDesktopMenu() {
   console.log("Click");
   desktopMenu.classList.toggle("inactive");
 }
+
+function toggleMobileMenu() {
+  //Ejecuta la funcion classList.toggle que quita o pone la clase 'inactive' dependiendo si la tiene o no
+  mobileMenu.classList.toggle("inactive");
+}
