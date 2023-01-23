@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let h = 0;
+      let m = 0;
+      let s = 0;
+
+      function reloj() {
+        console.log(h + ":" + m + ":" + s);
+        s = s + 1;
+        if (s > 59) {
+          s = 0;
+          m = m + 1;
+        }
+        if (m > 59) {
+          m = 0;
+          h = h + 1;
+        }
+        if (h > 23) {
+          h = 0;
+          m = 0;
+          s = 0;
+        }
+        setTimeout(() => {
+          reloj();
+        }, 1000);
+      }
+      reloj();
+    </script>
+  </body>
+</html>
