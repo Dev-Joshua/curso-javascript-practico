@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matematicas</title>
+  </head>
+  <body>
+    <h1>Taller de Matemáticas con Javascript</h1>
+    <p>Abrir consola del inspector de elementos</p>
+    <script>
+      //Cuadrado
+      console.group("Cuadrado");
+      const ladoCuadrado = 5;
+      const perimetroCuadrado = ladoCuadrado * 4;
+      const areaCuadrado = ladoCuadrado ** 2;
+
+      function calcularCuadrado(lado) {
+        return {
+          perimetro: lado * 4,
+          area: lado ** 2,
+        };
+      }
+
+      console.log({
+        ladoCuadrado,
+        perimetroCuadrado,
+        areaCuadrado,
+      });
+      console.groupEnd("Cuadrado");
+
+      //Triangulo
+      console.group("Triangulo");
+      const ladoTriangulo1 = 6;
+      const ladoTriangulo2 = 6;
+      const ladoTriangulobase = 4;
+      const alturaTriangulo = 5.5;
+
+      const perimetroTriangulo =
+        ladoTriangulo1 + ladoTriangulo2 + ladoTriangulobase;
+      const areaTriangulo = (ladoTriangulobase * alturaTriangulo) / 2;
+
+      function calcularTriangulo(lado1, lado2, base, altura) {
+        return {
+          perimetro: lado1 + lado2 + base,
+          area: (base * altura) / 2,
+        };
+      }
+
+      console.log({
+        ladoTriangulo1,
+        ladoTriangulo2,
+        ladoTriangulobase,
+        alturaTriangulo,
+        perimetroTriangulo,
+        areaTriangulo,
+      });
+
+      console.groupEnd("Triangulo");
+    </script>
+  </body>
+</html>
