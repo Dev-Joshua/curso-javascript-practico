@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Calculadora
+      function calculadora(num1, operador, num2) {
+        let resultado;
+        switch (operador) {
+          case "+":
+            resultado = num1 + num2;
+            break;
+          case "-":
+            resultado = num1 - num2;
+            break;
+          case "*":
+            resultado = num1 * num2;
+            break;
+          case "/":
+            resultado = num1 / num2;
+            break;
+          default:
+            resultado = "Operador incorrecto";
+            break;
+        }
+        console.log(resultado);
+        alert(resultado);
+      }
+
+      num1 = parseInt(prompt("Ingrese el primer numero"));
+      operador = prompt("Elija un operador: +, -, *, /");
+      num2 = parseInt(prompt("Ingrese otro numero"));
+      console.log(num1, operador, num2);
+
+      calculadora(num1, operador, num2);
+    </script>
+  </body>
+</html>
