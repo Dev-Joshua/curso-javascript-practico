@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let numeros = [2, 23, 10, 8];
+      let maxNum = 0;
+      //En cada iteracion preguntara
+      for (i = 0; i < numeros.length; i++) {
+        //Si el valor de [i] es mayor a maxNum, entonces se le asignara dicho valor a la variable maxNum
+        if (numeros[i] > maxNum) {
+          maxNum = numeros[i];
+        }
+      }
+      console.log(maxNum);
+    </script>
+  </body>
+</html>

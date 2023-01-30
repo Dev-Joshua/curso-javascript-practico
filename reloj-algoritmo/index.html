@@ -12,52 +12,52 @@
       <p id="reloj"></p>
     </div>
     <script>
-      // const relojHtml = document.querySelector("#reloj");
-
-      // let h = 0;
-      // let m = 0;
-      // let s = 0;
-
-      // function reloj() {
-      //   // console.log(h + ":" + m + ":" + s);
-      //   s = s + 1;
-      //   if (s > 59) {
-      //     s = 0;
-      //     m = m + 1;
-      //   }
-      //   if (m > 59) {
-      //     m = 0;
-      //     h = h + 1;
-      //   }
-      //   if (h > 23) {
-      //     h = 0;
-      //     m = 0;
-      //     s = 0;
-      //   }
-      //   setTimeout(() => {
-      //     reloj();
-      //   }, 1000);
-
-      //   relojHtml.innerText = h + ":" + m + ":" + s;
-      // }
-      // reloj();
+      const relojHtml = document.querySelector("#reloj");
 
       let h = 0;
       let m = 0;
       let s = 0;
 
-      const tipos = [h, m, s];
-      const limites = [24, 60, 60];
-
-      function inicializarContador(tipo, limite) {
-        if (tipo == limite) {
-          tipo = 0;
-          console.log("si es igual al limite");
+      function reloj() {
+        // console.log(h + ":" + m + ":" + s);
+        s = s + 1;
+        if (s > 59) {
+          s = 0;
+          m = m + 1;
         }
+        if (m > 59) {
+          m = 0;
+          h = h + 1;
+        }
+        if (h > 23) {
+          h = 0;
+          m = 0;
+          s = 0;
+        }
+        setTimeout(() => {
+          reloj();
+        }, 1000);
+
+        relojHtml.innerText = h + ":" + m + ":" + s;
       }
-      for (i = 0; i < tipos.length; i++) {
-        inicializarContador(tipos[i], limites[i]);
-      }
+      reloj();
+
+      // let h = 0;
+      // let m = 0;
+      // let s = 0;
+
+      // const tipos = [h, m, s];
+      // const limites = [24, 60, 60];
+
+      // function inicializarContador(tipo, limite) {
+      //   if (tipo == limite) {
+      //     tipo = 0;
+      //     console.log("si es igual al limite");
+      //   }
+      // }
+      // for (i = 0; i < tipos.length; i++) {
+      //   inicializarContador(tipos[i], limites[i]);
+      // }
     </script>
   </body>
 </html>
