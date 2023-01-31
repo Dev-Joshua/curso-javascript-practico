@@ -48,6 +48,17 @@
         };
       }
 
+      //Calcular altura de un triangulo isoceles.(la base debe ser distinta de sus lados)
+      function calcularAlturaTrianguloI(lado1, base) {
+        if (lado1 == base) {
+          console.warn("Este no es un triángulo isosceles");
+        } else {
+          // h = raizcuadrada(lado1**2 - (b**2)/4)
+          const altura = Math.sqrt(lado1 ** 2 - base ** 2 / 4);
+          return altura;
+        }
+      }
+
       console.log({
         ladoTriangulo1,
         ladoTriangulo2,
@@ -87,6 +98,25 @@
       }
 
       console.groupEnd("Circulo");
+
+      console.group("Triangulo Escaleno");
+
+      function calcularAlturaTrianguloE(lado1, lado2, lado3) {
+        //Si no es escaleno no continua.(todos los lados deben ser distintos)
+        if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
+          return false;
+        } else {
+          //Si es escaleno procedemos a calcular su semiperimetro y area
+          const sp = (lado1 + lado2 + lado3) / 2;
+
+          //Retorna altura del lado1
+          return Math.round(
+            (2 / lado1) *
+              Math.sqrt(sp * (sp - lado1) * (sp - lado2) * (sp - lado3))
+          );
+        }
+      }
+      console.groupEnd("Triangulo Escaleno");
     </script>
   </body>
 </html>
