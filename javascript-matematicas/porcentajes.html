@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: coral;
+      }
+      article {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* margin: 0 auto; */
+        font-family: sans-serif;
+        height: 400px;
+        width: 50%;
+        background-color: cornsilk;
+        border-radius: 15px;
+      }
+      h1 {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .container {
+        display: flex;
+        margin-top: 50px;
+      }
+      .container div {
+        width: 50%;
+        align-items: center;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      p {
+        font-size: 14px;
+        width: 180px;
+        text-align: center;
+      }
+      input {
+        height: 15px;
+        width: 100px;
+      }
+      button {
+        border-radius: 5px;
+        background-color: black;
+        color: #eee;
+        font-size: 14px;
+        display: block;
+        margin: 50px auto;
+        height: 40px;
+        width: 80px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: coral;
+      }
+      #resultado {
+        text-align: center;
+        font-size: 16px;
+        letter-spacing: 2px;
+        width: 100%;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <article>
+      <h1>Porcentajes y descuentos</h1>
+      <div class="container">
+        <div>
+          <p>Escribe el valor del articulo que deseas comprar:</p>
+          <input id="inputPrecio" type="text" />
+        </div>
+        <div>
+          <p>Escribe el porcentaje de descuento aplicado:</p>
+          <input id="inputPorcentaje" type="text" />
+        </div>
+      </div>
+      <button id="btnCalcular">Calcular</button>
+
+      <p id="resultado"></p>
+    </article>
+
+    <script>
+      const input1 = document.querySelector("#inputPrecio");
+      const input2 = document.querySelector("#inputPorcentaje");
+      const btn = document.querySelector("#btnCalcular");
+      const resultado = document.querySelector("#resultado");
+
+      btn.addEventListener("click", calcularDescuento);
+
+      function calcularDescuento() {
+        const price = Number(input1.value);
+        const discount = Number(input2.value);
+
+        //Si no existe un valor dentro del input al precionar el boton:
+        if (!price || !discount) {
+          resultado.innerText = "ingresa un valor valido";
+        }
+        //Si el valor del descuento supera los 100 entonces:
+        if (discount > 100) {
+          resultado.innerText = "ingresa un valor valido";
+        } else {
+          newPrice = (price * (100 - discount)) / 100;
+
+          resultado.innerText =
+            "El valor total de tu articulo con el descuento incluido es " +
+            newPrice;
+        }
+      }
+      // function calcularDescuento(precio, descuento) {
+      //   return (precio * (100 - descuento)) / 100;
+      // }
+
+      // console.log(calcularDescuento(260000, 15));
+    </script>
+  </body>
+</html>
