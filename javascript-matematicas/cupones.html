@@ -78,7 +78,7 @@
   </head>
   <body>
     <article>
-      <h1>Porcentajes y descuentos</h1>
+      <h1>Cupones de descuento</h1>
       <div class="container">
         <div>
           <label for="inputPrecio"
@@ -87,10 +87,8 @@
           <input id="inputPrecio" type="number" />
         </div>
         <div>
-          <label for="inputPorcentaje"
-            >Escribe el porcentaje de descuento aplicado:</label
-          >
-          <input id="inputPorcentaje" type="number" />
+          <label for="coupon">Escoge un cupon de descuento:</label>
+          <input id="coupon" type="text" />
         </div>
       </div>
       <button id="btnCalcular">Calcular</button>
@@ -100,7 +98,7 @@
 
     <script>
       const input1 = document.querySelector("#inputPrecio");
-      const input2 = document.querySelector("#inputPorcentaje");
+      const inputCoupon = document.querySelector("#coupon");
       const btn = document.querySelector("#btnCalcular");
       const resultado = document.querySelector("#resultado");
 
@@ -108,29 +106,52 @@
 
       function calcularDescuento() {
         const price = Number(input1.value);
-        const discount = Number(input2.value);
+        const coupon = inputCoupon.value;
+        let discount;
 
-        //Si no existe un valor dentro del input al precionar el boton:
-        if (!price || !discount) {
-          resultado.innerText = "Ingresa un valor valido";
+        if (!price || !coupon) {
+          resultado.innerText = "Ingresa un cupon valido";
+          return;
         }
-        //Si el valor del descuento supera los 100 entonces:
-        if (discount > 100) {
-          resultado.innerText =
-            "Tu descuento supera el 100%. Ingresa otro valor";
-        } else {
-          newPrice = (price * (100 - discount)) / 100;
 
-          resultado.innerText =
-            "El valor total de tu articulo con el descuento incluido es " +
-            newPrice;
+        // if (coupon == "15%") {
+        //   discount = 15;
+        // } else if (coupon == "25%") {
+        //   discount = 25;
+        // } else if (coupon == "40%") {
+        //   discount = 40;
+        // } else {
+        //   resultado.innerText = 'El cupon no es valido'
+        //   return
+        // }
+
+        // const newPrice = (price * (100 - discount)) / 100;
+
+        // resultado.innerText =
+        //   "El valor total de tu articulo con el descuento incluido es " +
+        //   newPrice;
+
+        switch (coupon) {
+          case "15%":
+            discount = 15;
+            break;
+          case "25%":
+            discount = 25;
+            break;
+          case "40%":
+            discount = 40;
+            break;
+          default:
+            resultado.innerText = "El cupon no es valido";
+            return;
         }
+
+        const newPrice = (price * (100 - discount)) / 100;
+
+        resultado.innerText =
+          "El valor total de tu articulo con el descuento incluido es " +
+          newPrice;
       }
-      // function calcularDescuento(precio, descuento) {
-      //   return (precio * (100 - descuento)) / 100;
-      // }
-
-      // console.log(calcularDescuento(260000, 15));
     </script>
   </body>
 </html>
