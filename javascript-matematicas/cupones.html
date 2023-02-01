@@ -102,7 +102,21 @@
       const btn = document.querySelector("#btnCalcular");
       const resultado = document.querySelector("#resultado");
 
-      btn.addEventListener("click", calcularDescuento);
+      btn.addEventListener("click", calcularPrecioConDescuento);
+
+      const couponsList = [];
+      couponsList.push({
+        name: "mediana",
+        discount: 15,
+      });
+      couponsList.push({
+        name: "grande",
+        discount: 25,
+      });
+      couponsList.push({
+        name: "extragrande",
+        discount: 35,
+      });
 
       function calcularDescuento() {
         const price = Number(input1.value);
@@ -145,6 +159,52 @@
             resultado.innerText = "El cupon no es valido";
             return;
         }
+
+        const newPrice = (price * (100 - discount)) / 100;
+
+        resultado.innerText =
+          "El valor total de tu articulo con el descuento incluido es " +
+          newPrice;
+      }
+
+      ///////////////////////////////////////////////////////////////////////
+      function calcularPrecioConDescuento() {
+        const price = Number(input1.value);
+        const coupon = inputCoupon.value;
+
+        if (!price || !coupon) {
+          resultado.innerText = "Ingresa un cupon valido";
+          return;
+        }
+
+        let discount;
+
+        //Se aplicara esta funcion a cada uno de los elementos del array para ver si alguno coincide
+        function validarCupon(couponElement) {
+          //Devuelve true o false. Dependiendo si coincide su propiedad name con lo que escribio el usuario en el input coupon
+          return couponElement.name == coupon;
+        }
+
+        //Para no usar un ciclo manual se utiliza el metodo .find para aplicar la funcion a cada elemento del array
+        //Le enviamos la funcion al metodo .find() de mi array(couponList) para asi traer el elemento que cumpla con esta funcion(validacion). //{}
+        const couponInArray = couponsList.find(validarCupon);
+
+        //Si existe algun elemento en esta variable(couponInArray) que coincida se aplica el descuento
+        if (couponInArray) {
+          //discount?
+          discount = couponInArray.discount;
+        } else {
+          //no es valido
+          resultado.innerText = "El cupon no es valido";
+          return;
+        }
+
+        console.log({
+          coupon,
+          discount,
+          couponInArray,
+          couponsList,
+        });
 
         const newPrice = (price * (100 - discount)) / 100;
 
