@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      En este desafío vas a recibir un array de objetos. Cada objeto representa
+      a un usuario. Debes encontrar al usuario con cierto ID y retornar su
+      nombre. En caso de no existir, debes retornar false.
+    </p>
+    <br />
+
+    <p>
+      const users = []; users.push({ id: 123, name: 'Juanito Alcachofa' });
+      users.push({ id: 456, name: 'Juanita Alcaparra' }); solution(users, 456);
+      solution(users, 999);
+    </p>
+    <script>
+      const users = [];
+      users.push({ id: 123, name: "Juanito Alcachofa" });
+      users.push({ id: 456, name: "Juanita Alcaparra" });
+
+      //Con .find busco en el array el usuario que coincida mediante el id
+      //retorna el nombre del usuario si existe tal coincidencia, sino devuelve false
+      function solution(users, id) {
+        const user = users.find((user) => user.id == id);
+        return user?.name || false;
+      }
+
+      solution(users, 456);
+      solution(users, 999);
+    </script>
+  </body>
+</html>
