@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Taller de Matematicas de Javascript</h1>
+    <script>
+      //PROMEDIO
+      let arrayList = [323, 731, 890, 1220, 150];
+
+      function calcularPromedio(array) {
+        // let sumaList = 0;
+
+        //Sumar todos los elementos del array mediante un ciclo for
+        // for (let i = 0; i < array.length; i++) {
+        //   sumaList = sumaList + array[i];
+        // }
+
+        //Reducimos toda la lista de elementos a un unico valor //Suma de todos los elmeentos del array
+        // function sumarElementos(valorAcumulado, nuevoValor) {
+        //   return valorAcumulado + nuevoValor;
+        // }
+
+        // //Metodo reduce()
+        // const sumaList = array.reduce(sumarElementos);
+
+        //Manera mas corta utilizando una arrow function () => {} en vez de la function sumarElementos
+        const sumaList = array.reduce(
+          (acumulador, nuevoValor) => acumulador + nuevoValor
+        );
+
+        //Se divide el total de la suma en la cantidad de elementos
+        const promedio = sumaList / array.length;
+        console.log(sumaList);
+
+        return promedio;
+      }
+
+      calcularPromedio(arrayList);
+    </script>
+  </body>
+</html>
+
+<!-- 
+    Promedio: Tambien llamado media aritmética que se calcula asi
+        -> Se suman todos los elementos y se dividen entre la cantidad de elementos
+           venta1 + venta2 + venta3 / cantidad de ventas(3)
+    
+    Mediana: Es el valor que se ubica en la mitad de la lista de valores ordenados cuando la lista es impar, 
+             cuando la lista es par se toman los dos valores centrales, se suman y se divide entre dos.
+        -> $450 {$500} $600
+        -> sueldo1 {sueldo2 sueldo3} sueldo4 => sueldo2+sueldo3 / 2
+    
+    Moda: Consiste en encontrar el valor que se repita mayor cantidad de veces en una lista de valores
+        -> 1, 10, (14), 3, 24, (14), 10, 35, 13, (14)
+          El dato que mas veces se repitio fue el 14
+   -->
