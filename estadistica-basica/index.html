@@ -11,6 +11,10 @@
     <script>
       //PROMEDIO
       let arrayList = [323, 731, 890, 1220, 150];
+      let listaMediana = [5, 8, 23, 4, 10];
+
+      const listaOrdenada = listaMediana.sort((a, b) => a - b);
+      console.log(listaOrdenada);
 
       function calcularPromedio(array) {
         // let sumaList = 0;
@@ -38,6 +42,36 @@
         console.log(sumaList);
 
         return promedio;
+      }
+
+      function esPar(lista) {
+        //Los condicionales toman un 0 como false. Por lo tanto no se ejecuta el codigo
+        // if (lista.length % 2) {
+        //   return false;
+        // } else {
+        //   return true;
+        // }
+        return !(lista.length % 2);
+      }
+      function esImpar(lista) {
+        return lista.length % 2;
+      }
+
+      function calcularMediana(lista) {
+        const listaEsPar = esPar(lista);
+
+        if (listaEsPar) {
+          const index1 = Math.round(lista.length / 2) - 1;
+          const index2 = Math.round(lista.length / 2);
+          const medianaListaPar = (lista[index1] + lista[index2]) / 2;
+          console.log(medianaListaPar);
+        } else {
+          //Sacamos el elemento de la mitad de la lista impar
+          const indexMitadListaImpar = Math.floor(lista.length / 2);
+          const medianaListaImpar = lista[indexMitadListaImpar];
+          console.log(indexMitadListaImpar);
+          console.log(medianaListaImpar);
+        }
       }
 
       calcularPromedio(arrayList);
