@@ -13,8 +13,35 @@
       let arrayList = [323, 731, 890, 1220, 150];
       let listaMediana = [5, 8, 23, 4, 10];
 
+      //Ordenar una lista con el metodo sort de manera mas corta
+      //si la resta de a-b da un resultado negativo no lo mueve(-1), si da (0) no lo mueve, si da positivo hace el flip(1).
       const listaOrdenada = listaMediana.sort((a, b) => a - b);
       console.log(listaOrdenada);
+
+      //Ordenar una lista mediante una funcion mas larga
+      function ordenarLista(listaMediana) {
+        function ordenarListaSort(valorAcumulado, nuevoValor) {
+          if (valorAcumulado > nuevoValor) {
+            //Si el valor acumulado es mayor al nuevo valor de la iteracion hace el flip y lo pasa para atras del valorAcumulado
+            return 1;
+          } else if (valorAcumulado == nuevoValor) {
+            //Se deja igual
+            return 0;
+          } else if (valorAcumulado < nuevoValor) {
+            //Si el nuevo valor es mayor al que tenemos en valorAcumulado se deja igual en su posicion
+            return -1;
+          }
+        }
+        //Si queremos la lista ordenada de mayor a menor es de esta forma
+        // return -1
+        // return 0
+        // return 1
+
+        //A la mayoria de metodos como el .sort debemos enviarle una funcion(anonima, nombre de una funcion o arrow function)
+        const lista = listaMediana.sort(ordenarListaSort);
+
+        return lista;
+      }
 
       function calcularPromedio(array) {
         // let sumaList = 0;
@@ -55,6 +82,27 @@
       }
       function esImpar(lista) {
         return lista.length % 2;
+      }
+
+      function calcularModa(lista) {
+        //Creo un objeto.(key, value) => la key sera el elemento de mi lista, el value la cantidad de veces que ha aparecido este elemento en mi lista
+        const listaCount = {};
+
+        //Guardo el registro de cada vez que aparezca un elemento en mi lista
+        for (let i = 0; i < lista.length; i++) {
+          const elemento = lista[i];
+
+          //Si ya existe este elemento de mi lista entonces:
+          if (listaCount[elemento]) {
+            listaCount[elemento] += 1;
+          } else {
+            //Si no ha aparecido un mismo elemento
+            listaCount[elemento] = 1;
+          }
+          //Para validar si ya habia aparecido este elemento(cada posicion de mi array) antes, y si si! agregarle una nueva cuenta
+        }
+
+        console.log(listaCount);
       }
 
       function calcularMediana(lista) {
