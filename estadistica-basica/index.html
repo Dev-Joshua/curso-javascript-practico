@@ -71,6 +71,8 @@
         return promedio;
       }
 
+      calcularPromedio(arrayList);
+
       function esPar(lista) {
         //Los condicionales toman un 0 como false. Por lo tanto no se ejecuta el codigo
         // if (lista.length % 2) {
@@ -82,6 +84,23 @@
       }
       function esImpar(lista) {
         return lista.length % 2;
+      }
+
+      function calcularMediana(lista) {
+        const listaEsPar = esPar(lista);
+
+        if (listaEsPar) {
+          const index1 = Math.round(lista.length / 2) - 1;
+          const index2 = Math.round(lista.length / 2);
+          const medianaListaPar = (lista[index1] + lista[index2]) / 2;
+          console.log(medianaListaPar);
+        } else {
+          //Sacamos el elemento de la mitad de la lista impar
+          const indexMitadListaImpar = Math.floor(lista.length / 2);
+          const medianaListaImpar = lista[indexMitadListaImpar];
+          console.log(indexMitadListaImpar);
+          console.log(medianaListaImpar);
+        }
       }
 
       function calcularModa(lista) {
@@ -102,27 +121,34 @@
           //Para validar si ya habia aparecido este elemento(cada posicion de mi array) antes, y si si! agregarle una nueva cuenta
         }
 
-        console.log(listaCount);
+        //Para hallar la moda debo transformar el objeto en un array para asi recorrerlo, ordenarlo y hayar el valor mayor
+        const listaArray = Object.entries(listaCount);
+        const listaOrdenadaBi = ordenarListaBidimensional(listaArray, 1);
+        const listaMaxNumber = listaOrdenadaBi[listaArray.length - 1];
+        //La ultima posicion de listaOrdenadaBi tiene nuestra moda
+
+        console.log({
+          listaCount,
+          listaArray,
+          listaOrdenadaBi,
+          listaMaxNumber,
+        });
+
+        //La posicion es 0 porque el primer elemento del [] es la moda, el segundo es la cantidad de veces que se repite
+        console.log(`La moda es ${listaMaxNumber[0]}`);
       }
 
-      function calcularMediana(lista) {
-        const listaEsPar = esPar(lista);
-
-        if (listaEsPar) {
-          const index1 = Math.round(lista.length / 2) - 1;
-          const index2 = Math.round(lista.length / 2);
-          const medianaListaPar = (lista[index1] + lista[index2]) / 2;
-          console.log(medianaListaPar);
-        } else {
-          //Sacamos el elemento de la mitad de la lista impar
-          const indexMitadListaImpar = Math.floor(lista.length / 2);
-          const medianaListaImpar = lista[indexMitadListaImpar];
-          console.log(indexMitadListaImpar);
-          console.log(medianaListaImpar);
+      //[ [0,1], [0,1], [0,1] ] => Para recorrer lsitaArray(objeto convertido en array) entro por cada elemento[] de la lsita, a su indice 1
+      function ordenarListaBidimensional(listaMediana, i) {
+        function ordenarListaSort(valorAcumulado, nuevoValor) {
+          //Se ordena segun el indice[1] de cada elemento porque con ese valor se hace la comparacion
+          return valorAcumulado[1] - nuevoValor[1];
         }
-      }
+        //cons lista = listaMediana.sort((a,b) => a-b)
+        const lista = listaMediana.sort(ordenarListaSort);
 
-      calcularPromedio(arrayList);
+        return lista;
+      }
     </script>
   </body>
 </html>
