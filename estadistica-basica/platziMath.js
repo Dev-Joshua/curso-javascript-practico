@@ -68,7 +68,7 @@ PlatziMath.esImpar = function esImpar(lista) {
 };
 
 PlatziMath.calcularMediana = function calcularMediana(lista) {
-  const listaEsPar = esPar(lista);
+  const listaEsPar = PlatziMath.esPar(lista);
 
   if (listaEsPar) {
     const index1 = Math.round(lista.length / 2) - 1;
