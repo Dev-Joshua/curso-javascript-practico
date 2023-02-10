@@ -2,7 +2,7 @@
 const PlatziMath = {};
 
 //Ordenar una lista mediante una funcion mas larga
-PlatziMath.ordenarLista = function ordenarLista(listaMediana) {
+PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
   function ordenarListaSort(valorAcumulado, nuevoValor) {
     if (valorAcumulado > nuevoValor) {
       //Si el valor acumulado es mayor al nuevo valor de la iteracion hace el flip y lo pasa para atras del valorAcumulado
@@ -21,7 +21,7 @@ PlatziMath.ordenarLista = function ordenarLista(listaMediana) {
   // return 1
 
   //A la mayoria de metodos como el .sort debemos enviarle una funcion(anonima, nombre de una funcion o arrow function)
-  const lista = listaMediana.sort(ordenarListaSort);
+  const lista = listaDesordenada.sort(ordenarListaSort);
 
   return lista;
 };
@@ -67,20 +67,23 @@ PlatziMath.esImpar = function esImpar(lista) {
   return lista.length % 2;
 };
 
-PlatziMath.calcularMediana = function calcularMediana(lista) {
+PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
+  const lista = PlatziMath.ordenarLista(listaDesordenada);
   const listaEsPar = PlatziMath.esPar(lista);
 
   if (listaEsPar) {
     const index1 = Math.round(lista.length / 2) - 1;
     const index2 = Math.round(lista.length / 2);
     const medianaListaPar = (lista[index1] + lista[index2]) / 2;
-    console.log(medianaListaPar);
+    return medianaListaPar;
+    // console.log(medianaListaPar);
   } else {
     //Sacamos el elemento de la mitad de la lista impar
     const indexMitadListaImpar = Math.floor(lista.length / 2);
     const medianaListaImpar = lista[indexMitadListaImpar];
     console.log(indexMitadListaImpar);
     console.log(medianaListaImpar);
+    return medianaListaImpar;
   }
 };
 
@@ -123,15 +126,15 @@ PlatziMath.calcularModa = function calcularModa(lista) {
 
 //[ [0,1], [0,1], [0,1] ] => Para recorrer lsitaArray(objeto convertido en array) entro por cada elemento[] de la lsita, a su indice 1
 PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(
-  listaMediana,
+  listaDesordenada,
   i
 ) {
   function ordenarListaSort(valorAcumulado, nuevoValor) {
     //Se ordena segun el indice[1] de cada elemento porque con ese valor se hace la comparacion
     return valorAcumulado[1] - nuevoValor[1];
   }
-  //cons lista = listaMediana.sort((a,b) => a-b)
-  const lista = listaMediana.sort(ordenarListaSort);
+  //cons lista = listaDesordenada.sort((a,b) => a-b)
+  const lista = listaDesordenada.sort(ordenarListaSort);
 
   return lista;
 };
