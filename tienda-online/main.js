@@ -81,10 +81,34 @@ productList.push(
       "https://www.sanferbike.com/videostv/wp-content/uploads/TREK-Session-1-600X400.jpg",
   },
   {
-    name: "ps5",
+    name: "PS5",
     price: 700,
     image:
       "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/01/buscas-ps5-buen-precio-oportunidad-stock-dos-juegos-exclusivos-sobreprecio-2926200.jpg?tf=3840x",
+  },
+  {
+    name: "Tv Samsung 50",
+    price: 500,
+    image:
+      "https://images.samsung.com/is/image/samsung/p6pim/co/lh50beahlgkxzl/gallery/co-smart-signage-bea-h-b2c-lh50beahlgkxzl-532731069?$650_519_PNG$",
+  },
+  {
+    name: "Bike",
+    price: 100,
+    image:
+      "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  },
+  {
+    name: "PS5",
+    price: 700,
+    image:
+      "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/01/buscas-ps5-buen-precio-oportunidad-stock-dos-juegos-exclusivos-sobreprecio-2926200.jpg?tf=3840x",
+  },
+  {
+    name: "Bike",
+    price: 100,
+    image:
+      "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
     name: "Tv Samsung 50",
