@@ -12,26 +12,28 @@ function encontrarPersona(id) {
 function medianaPorPersona(idPersona) {
   //Guardo en esta variable el array trabajos de esa persona mediante su id
   const trabajos = encontrarPersona(idPersona).trabajos;
-  console.log(trabajos);
+  // console.log(trabajos);
 
   //Extraigo y creo un nuevo array a partir de los salarios del array trabajos de la persona
-  const salarios = trabajos.map((elemento) => {
+  const salarios = trabajos.map(function (elemento) {
     return elemento.salario;
   });
-  console.log(salarios);
+  // console.log(salarios);
 
   //Le paso salarios a mi metodo calcularMediana
   const medianaSalarios = PlatziMath.calcularMediana(salarios);
-  console.log(medianaSalarios);
+  // console.log(medianaSalarios);
+  return medianaSalarios;
 }
 
+//Encontrar el array(trabajos) de la persona con el id que estuvieramos buscando
 function proyeccionPorPersona(idPersona) {
   const trabajos = encontrarPersona(idPersona).trabajos;
 
   //Se debe llenar este array con los distintos incrementos que ha tenido la persona a lo largo de su carrera
   let porcentajesDeCrecimiento = [];
 
-  //Iterar el array trabajos
+  //Iterar el array trabajos. X cada elemento dentro del array(trabajos) hacer un calculo entre el salario actual & salarioAnterior para  sacar el porcentaje de crecimiento
   for (let i = 1; i < trabajos.length; i++) {
     //Entro al array de salario(propiedad del objeto trabajos), a su indice
     const salarioActual = trabajos[i].salario;
@@ -40,7 +42,7 @@ function proyeccionPorPersona(idPersona) {
     const crecimiento = salarioActual - salarioAnterior;
     //Para sacar el porcentaje del incremento:
     const porcentajeCrecimiento = (crecimiento / salarioAnterior).toFixed(2);
-    //Lo agrego al array
+    //Cada porcentaje calculado por cada distinto año(elemento) del array trabajos lo guardamos en este array
     porcentajesDeCrecimiento.push(porcentajeCrecimiento);
   }
 
@@ -122,4 +124,70 @@ function medianaEmpresaYear(nombre, year) {
   }
 }
 
-//Funcion para hallar la proyeccion de una empresa
+//Funcion para hallar la proyeccion de una empresa. Sacamos las listas de medianas de cada añó por empresa
+function proyeccionPorEmpresa(nombre) {
+  //Encontrar a la empresa q buscamos. Dicha empresa es un objeto que tiene todos los años
+  if (!empresas[nombre]) {
+    console.warn("La empresa no existe");
+  } else {
+    //Crear un array a partir de un objeto. X cada iteracion este array tendra la mediana de cada año de este objeto
+    const empresaYears = Object.keys(empresas[nombre]);
+    const listaMedianaYears = empresaYears.map((year) => {
+      //Por cada iteracion recibimos un año
+      return medianaEmpresaYear(nombre, year);
+    }); //[800, 900, 200] Este array tendra la mediana de cada año
+    console.log({ listaMedianaYears });
+
+    //Hacemos la proyeccion de una empresa a partir de las medianas de cada arreglo de salarios de tdas las personas que trabajaron cada año en cada empresa
+    let porcentajesDeCrecimiento = [];
+
+    for (let i = 1; i < listaMedianaYears.length; i++) {
+      const salarioActual = listaMedianaYears[i];
+      const salarioAnterior = listaMedianaYears[i - 1];
+      const crecimiento = salarioActual - salarioAnterior;
+      const porcentajeCrecimiento = crecimiento / salarioAnterior;
+      porcentajesDeCrecimiento.push(porcentajeCrecimiento);
+    }
+
+    const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(
+      porcentajesDeCrecimiento
+    );
+
+    const ultimaMediana = listaMedianaYears[listaMedianaYears.length - 1];
+    const aumento = ultimaMediana * medianaPorcentajesCrecimiento;
+    const nuevaMedianaDeSalarios = ultimaMediana + aumento;
+    return nuevaMedianaDeSalarios;
+  }
+}
+
+//Analisis General para la mediana general
+function medianaGeneral() {
+  const listaMedianas = salarios.map((persona) =>
+    medianaPorPersona(persona.id)
+  );
+  // const medianaPorSujeto = listaMedianas.map((id) => medianaPorPersona(id));
+
+  const mediana = PlatziMath.calcularMediana(listaMedianas);
+
+  return mediana;
+}
+
+//Mediana del Top 10%
+function medianaTop10() {
+  const listaMedianas = salarios.map((persona) =>
+    medianaPorPersona(persona.id)
+  );
+
+  const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+
+  // 20 / 10 => 2
+  const cantidad = listaMedianas.length / 10;
+  const limite = listaMedianas.length - cantidad;
+
+  //slice(hace una copia de los elementos seleccionados, desde (limite) hasta el final del arreglo(medianasOrdenadas.length)), splice(quita los elementos seleccionados del array original)
+  const top10 = medianasOrdenadas.slice(limite, medianasOrdenadas.length);
+  console.log({ top10 });
+
+  const medianaTop10 = PlatziMath.calcularMediana(top10);
+  return medianaTop10;
+}
